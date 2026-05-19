@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 
 // Standard C-linkage header for LAPACKE
 #include <lapacke.h>
@@ -35,6 +36,14 @@ int main() {
     } else {
         std::cerr << "LAPACK Matrix factorization failed. Info code: " << info << std::endl;
     }
+
+    std::string result = "1/2"; 
+
+    // Construct a Linux command string
+    std::string command = "zenity --info --title=\"Calculation Result\" --text=\"The final result is: " + result + "\"";
+
+    // Execute the terminal command directly from C++
+    std::system(command.c_str());
 
     return 0;
 }
