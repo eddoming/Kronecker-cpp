@@ -5,7 +5,7 @@ sudo apt update
 sudo apt install liblapacke-dev liblapack-dev libblas-dev
 
 # Execute terminal
-g++ main.cpp -o test -llapacke -llapack
+g++ main.cpp include/**.cpp -o test -llapacke -llapack
 
 # Clean and rerun build in CMake
 cd /home/ragde/Kronecker-cpp/build
@@ -13,7 +13,7 @@ rm -rf *
 cmake ..
 cmake --build .
 
-# Release and DEbug
+# Release and Debug
 mkdir Release
 cd Release
 cmake -DCMAKE_BUILD_TYPE=Release ..

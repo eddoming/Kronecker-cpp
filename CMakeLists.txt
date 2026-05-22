@@ -17,6 +17,12 @@ add_executable(Kronecker src/main.cpp)
 # Inputs for Relase and DEbug
 #set(CMAKE_CXX_FLAGS_DEBUG_INIT "-Wall")
 #set(CMAKE_CXX_FLAGS_RELEASE_INIT "-Wall")
+add_library(Functions STATIC
+    src/include/Functions.cpp
+    src/include/Functions.h
+)
+
+target_include_directories(Functions PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Apply flags dynamically based on the active build type
 target_compile_options(Kronecker PRIVATE
@@ -25,4 +31,4 @@ target_compile_options(Kronecker PRIVATE
 )
 
 # Link LAPACK
-target_link_libraries(Kronecker PRIVATE lapacke ${LAPACK_LIBRARIES})
+target_link_libraries(Kronecker PRIVATE Functions lapacke ${LAPACK_LIBRARIES})
