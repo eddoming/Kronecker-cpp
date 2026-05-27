@@ -14,7 +14,23 @@
 #include "src/core/CurrentSession.hpp"
 #include "src/utility/Initialization.hpp"
 
+double laguerre(int n, double x)
+{
+    return std::laguerre(n, x);
+}
 
+double dlaguerre(int n, double x)
+{
+    if ((n > 0) && (x > 0.00000000000000001))
+    {
+        return ((n * laguerre(n, x) - (n * laguerre(n - 1, x))) / x);
+    }
+    else
+    {
+        std::exit(1);
+        return 0.0;
+    }
+}
 int main() {
     core::CurrentSession currentSession{};
     //TODO [A Kronecker B] x = b
